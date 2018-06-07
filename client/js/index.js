@@ -36,7 +36,7 @@ $('#source-model > .sidebar .png-download').click(function () {
 });
 
 $('#source-model > .sidebar .model-download').click(function () {
-    var model = {}; // TODO
+    var model = source.toJSON(sourceModel.getCells());
     saveAs(new Blob([JSON.stringify(model)], {type: 'application/json'}), 'source-model.json');
     return false;
 });

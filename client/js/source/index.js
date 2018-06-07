@@ -4,5 +4,6 @@
 exports.source = {
     elements: require('./elements').elements,
     links: {},
-    nets: {}
+    nets: {},
+    toJSON: require('./tojson').toJSON
 };
