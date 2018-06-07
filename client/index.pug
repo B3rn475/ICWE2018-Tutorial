@@ -1,0 +1,44 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+        link(rel='stylesheet', type='text/css', href='./css/bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='./css/joint.min.css')
+        link(rel='stylesheet', type='text/css', href='./css/almost-joint.min.css')
+        link(rel='stylesheet', type='text/css' href='./css/editor.min.css')
+    body
+        div
+            .navbar.navbar-inverse.top
+                .container-fluid
+                    .navbar-header
+                        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#main-menu', aria-expanded='false')
+                            span.sr-only Toggle navigation
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href='#') ICWE2018 Tutorial
+                    #main-menu.collapse.navbar-collapse
+                        ul.nav.navbar-nav(role='tablist')
+                            li.active(role='presentation')
+                                a(role='tab', data-toggle='tab', aria-controls='ifml', href='#ifml') Source Model
+            .tab-content
+                #source-model.tab-pane.editor.active(role='tabpanel')
+                    .sidebar
+                        ul.list-group
+                            a.list-group-item.model-load(href='#!') Load Model
+                            a.list-group-item.model-download(href='#!') Download Model
+                            a.list-group-item.png-download(href='#!') Download as PNG
+                    .board
+                    input(type='file', style='width:0; height: 0')
+        script(type='text/javascript', src='./js/lodash.min.js')
+        script(type='text/javascript', src='./js/jquery.min.js')
+        script(type='text/javascript', src='./js/backbone.min.js')
+        script(type='text/javascript', src='./js/knockout.min.js')
+        script(type='text/javascript', src='./js/joint.min.js')
+        script(type='text/javascript', src='./js/FileSaver.min.js')
+        script(type='text/javascript', src='./js/bootstrap.min.js')
+        script(type='text/javascript', src='./js/bootstrap-notify.min.js')
+        script(type='text/javascript', src='./js/almost.min.js')
+        script(type='text/javascript', src='./js/almost-joint.min.js')
+        script(type='text/javascript', src='./js/index.js')
