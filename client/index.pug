@@ -21,7 +21,9 @@ html
                     #main-menu.collapse.navbar-collapse
                         ul.nav.navbar-nav(role='tablist')
                             li.active(role='presentation')
-                                a(role='tab', data-toggle='tab', aria-controls='ifml', href='#ifml') Source Model
+                                a(role='tab', data-toggle='tab', aria-controls='source', href='#source-model') Source Model
+                            li(role='presentation')
+                                a(role='tab', data-toggle='tab', aria-controls='target', href='#target-model') Target Model
             .tab-content
                 #source-model.tab-pane.editor.active(role='tabpanel')
                     .sidebar
@@ -31,6 +33,14 @@ html
                             a.list-group-item.png-download(href='#!') Download as PNG
                     .board
                     input(type='file', style='width:0; height: 0')
+                #target-model.tab-pane.editor.active(role='tabpanel')
+                    .sidebar
+                        ul.list-group
+                            a.list-group-item.model-transform(href='#!') Transform
+                            a.list-group-item.png-download(href='#!') Download as PNG
+                    .board
+                    input(type='file', style='width:0; height: 0')
+
         script(type='text/javascript', src='./js/lodash.min.js')
         script(type='text/javascript', src='./js/jquery.min.js')
         script(type='text/javascript', src='./js/backbone.min.js')

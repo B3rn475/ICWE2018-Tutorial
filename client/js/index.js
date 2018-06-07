@@ -9,6 +9,8 @@ var _ = require('lodash'),
     FileReader = require('FileReader'),
     createBoard = require('almost-joint').createBoard,
     source = require('./source').source,
+    target = require('./target').target,
+    source2target = require('./source2target'),
     defaultLink = require('./defaultlink').defaultLink,
     AException = require('almost').Exception;
 
@@ -26,9 +28,23 @@ var sourceModel = new joint.dia.Graph(),
         template: '<a class="list-group-item almost-place-holder"></a>',
         builders: sourceBuilders,
         width: 170
+    }),
+    targetModel = new joint.dia.Graph(),
+    targetBuilders = _.values(target.elements).map(toBuilder).concat(_.values(target.nets)),
+    targetBoard = createBoard({
+        el: '#target-model > .board',
+        model: targetModel,
+        defaultLink: defaultLink
+    }),
+    targetMenu = sourceBoard.createElementsMenu({
+        container: '#target-model > .sidebar > ul',
+        template: '<a class="list-group-item almost-place-holder"></a>',
+        builders: targetBuilders,
+        width: 170
     });
 
 sourceBoard.zoomE();
+targetBoard.zoomE();
 
 $('#source-model > .sidebar .png-download').click(function () {
     sourceBoard.download();
@@ -72,5 +88,15 @@ $('#source-model > input[type=file]').change(function () {
 
 $('#source-model > .sidebar .model-load').click(function () {
     $('#source-model > input[type=file]').click();
+    return false;
+});
+
+$('#target-model > .sidebar .model-transform').click(function () {
+    var input = source.toJSON(sourceModel.getCells()),
+        output = source2target.myAmazingTransformation(input),
+        cells = target.fromJSON(output);
+    targetModel.clear();
+    targetBoard.clearHistory();
+    targetModel.addCells(cells);
     return false;
 });
